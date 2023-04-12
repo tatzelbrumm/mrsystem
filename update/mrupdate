@@ -1,0 +1,9 @@
+#!/bin/sh
+
+full_name=$1
+echo "***** Update $full_name *****"
+tar -C / -xzf $full_name tmp/update.sh
+sudo /tmp/update.sh $full_name
+rm /tmp/update.sh
+rm $full_name
+echo "***** Update finished *****"

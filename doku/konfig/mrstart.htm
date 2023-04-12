@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<LINK HREF="../../../mrsystem.css" REL="stylesheet">
+<TITLE>Die Konfigurationsdatei /etc/mrstart</TITLE>
+</HEAD>
+<BODY>
+<DIV CLASS="odiv">
+<H1>Die Konfigurationsdatei /etc/mrstart</H1>
+</DIV>
+<P>
+Die Datei <VAR>/etc/mrstart</VAR> beschreibt, welche Daemons des
+<VAR>mrsystem</VAR> gestartet werden. Damit kann das Startscript
+<VAR>/etc/init.d/mrsystem</VAR> generisch arbeiten und mu&szlig; nicht f&uuml;r
+jede &Auml;nderung der zu startenden Programme ge&auml;ndert werden.
+<P>
+Jede Zeile der Datei enth&auml;lt einen Eintrag mit dem Namen des Daemons
+und durch ein Leerzeichen getrennt das Schl&uuml;sselwort <VAR>start</VAR>
+oder <VAR>stop</VAR>. Daemons mit dem Schl&uuml;sselwort <VAR>start</VAR>
+werden vom Startscipt gestartet. Die anderen Eintr&auml;ge werden
+&uuml;bersprungen. Ein Beispiel sieht wie folgt aus:
+<P>
+<PRE>drehscheibe start
+mrcc stop
+mrcs2eth start
+mrcs2sl stop
+startmrgpios88 stop
+mrcceth stop
+mrms1 stop
+mrms2 start
+mrms24l stop
+mrslcan stop
+mrsrcp stop
+mrzentrale start
+mrtty stop
+mrlok stop</PRE>
+<P>
+<HR>
+<P>
+<CENTER>
+<A HREF="bbb.htm">Zur&uuml;ck zum BBB</A> -
+<A HREF="index.htm">Zur&uuml;ck zur Modellbahn Startseite</A> -
+<A HREF="../index.htm">Zur&uuml;ck zur Homepage</A>
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,279 @@
+<HTML>
+<HEAD>
+<LINK HREF="../../../mrsystem.css" REL="stylesheet">
+<TITLE>Die Konfigurationsdatei /etc/mrsystem</TITLE>
+</HEAD>
+<BODY>
+<DIV CLASS="odiv">
+<H1>Die Konfigurationsdatei /etc/mrsystem</H1>
+</DIV>
+<P>
+Die Konfiguration wird aus der Datei <VAR>/etc/mrsystem</VAR> von jedem
+Daemonen beim Programmstart eingelesen. Die Konfigurationsdatei enth&auml;lt
+die nachfolgend aufgef&uuml;hrten Werte.
+<P>
+<TABLE BORDER="1">
+<TR><TH>Name</TH><TH>Default</TH><TH>Beschreibung</TH></TR>
+<TR>
+<TD>zentrale</TD>
+<TD>1</TD>
+<TD>
+Dieser Wert bestimmt das Verhalten der Software.
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Bedeutung</TH></TR>
+<TR>
+<TD>0</TD>
+<TD>Die Software verh&auml;lt sich passiv und versendet keine Ping <VAL>"member
+request"</VAL> Nachrichten. Jede CAN Nachricht wird zwischen CAN und Ethernet
+&uuml;bertragen (Proxy). Wenn eine CS2 bzw. cs2.exe erkannt wird, werden die
+"*.cs2* Konfigurationsdateien abgefragt. Verbindungen &uuml;ber Ethernet werden
+angenommen. Dieser Modus &auml;hnelt dem einer CS2 Slave. Die Lokanmeldung und
+Verwaltung der Objekte kann z.b. von einem Programm auf einem angeschlossenen
+PC erledigt werden. F&uuml;r diesen Mode sollte eine mit dem System verbundene
+cs2.exe im Mastermode laufen. Eine evtl. angeschlossene MS2 w&uuml;rde auch in
+den Slave Modus gehen.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>Die Software versendet aktiv Ping <VAL>"member request"</VAL> Nachrichten.
+Die CAN Ping Nachrichten werden gefiltert, so da&szlig; eine MS2 nicht in den
+Slave Modus geht. Wenn eine MS2 erkannt wird, werden die Loks abgefragt.
+Verbindungen &uuml;ber Ethernet werden angenommen. In der Kombination aus MS2
+und dieser Software &auml;hnelt dieser Modus dem einer CS2 Master. F&uuml;
+diesen Mode sollte eine mit dem System verbundene cs2.exe im Slavemode
+laufen.</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>broadcast</TD>
+<TD>1</TD>
+<TD>
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Bedeutung</TH></TR>
+<TR>
+<TD>0</TD>
+<TD>Die UDP Nachrichten werden als Unicast an die Adresse verschickt, von der
+Nachrichten empfangen wurden.</TD>
+</TR>
+<TD>1</TD>
+<TD>Die UDP Nachrichten werden als Broadcast verschickt. Als Broadcast Adresse
+wird der unter <VAR>udpbc</VAR> eingetragene Adresse verwendet.</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>udpbc</TD>
+<TD NOWRAP>"255.255.255.255"</TD>
+<TD>Dies ist die Broadcast Adresse, an die die UDP Broadcasts verschickt
+werden.</TD>
+</TR>
+<TR>
+<TD>address</TD>
+<TD NOWRAP>"0.0.0.0"</TD>
+<TD>Dies ist die IP Adresse, &uuml;ber die die interne Kommunikation
+stattfindet. Wenn der Wert <VAL>0.0.0.0</VAL> ist, wird das
+<VAR>interface</VAR> benutzt. Wenn hier eine Adresse eingetragen wird, sollte
+die interne Adresse des Loopback Interfaces <VAL>127.0.0.1</VAL> verwendet
+werden.</TD>
+</TR>
+<TR>
+<TD>port</TD>
+<TD>10234</TD>
+<TD>Dies ist die Portnummer, &uuml;ber die die interne Kommunikation
+stattfindet. Sollte einen andere Software diese Portnummer verwenden, kann hier
+der Wert auf eine andere Portnummer gesetzt werden.</TD>
+</TR>
+<TR>
+<TD>interface</TD>
+<TD NOWRAP>"lo"</TD>
+<TD>Dies ist das Interface, &uuml;ber die die interne Kommunikation
+stattfindet. Wenn als Adresse der Wert <VAL>0.0.0.0</VAL> eingetragen wird,
+findet dir Kommunikation &uuml;ber dieses Interface statt. Als Interface
+sollte das Loopback Interface <VAL>lo</VAL> eingetragen werden.</TD>
+</TR>
+<TR>
+<TD>can_interface</TD>
+<TD NOWRAP>"can0"</TD>
+<TD>Dies ist das CAN Interface zu M&auml;rklin Digital</TD>
+</TR>
+<TR>
+<TD>cs2_path</TD>
+<TD NOWRAP>"/var/www/config"</TD>
+<TD>Dies ist der Pfad zu den <VAL>*.cs2</VAL> Dateien. Diese Dateien
+m&uuml;ssen im Verzeichnis <VAL>config</VAL> des HTML Roots liegen. Damit
+findet auch Software, die diese Dateien per <VAL>http</VAL> abfragt, diese
+Dateien.</TD>
+</TR>
+<TR>
+<TD>protokoll</TD>
+<TD NOWRAP>0</TD>
+<TD>Dies gibt an, ob und welche Protokolle das System in der Gleisbox
+einschalten soll. Das Gleissignal kann in der Gleisbox erst eingeschaltet
+werden, wenn die Gleisprotokolle gesetzt sind. Da z.B. Rocrail eine CS2
+erkennt, wird nur die Gleisspannung eingeschaltet, aber nicht die Protokolle
+eingeschaltet. Der Wert ist eine Summe der folgenden Werte. Der Wert 0
+bedeutet, da&szlig; keine Protokolle eingeschaltet werden.
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Protokoll</TH></TR>
+<TR><TD>1 (0x01)</TD><TD>Motorola</TD></TR>
+<TR><TD>2 (0x02)</TD><TD>mfx</TD></TR>
+<TR><TD>4 (0x04)</TD><TD>dcc</TD></TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>gleissignal</TD>
+<TD>"stop"</TD>
+<TD>Dies gibt an, ob das Gleissignal eingeschaltet werden soll
+<CODE>"start"</CODE> oder nicht <CODE>"stop"</CODE>.</TD>
+</TR>
+<TR>
+<TD>sync</TD>
+<TD>0</TD>
+<TD>Dies gibt an, ob und welche Daten mit der Master MS2 synchronisiert werden
+sollen. Der Wert ist eine Bitmaske, die sich durch <VAR>AND</VAR>
+Verkn&uuml;pfung der folgenden Werte zusammensetzt:
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Name</TH><TH>Bedeutung</TH></TR>
+<TR>
+<TD>1 (0x0001)</TD>
+<TD>periodisch</TD>
+<TD>periodisch die MS2 pollen, wenn "zentrale=1"</TD>
+</TR>
+<TR>
+<TD>2 (0x0002)</TD>
+<TD>keybd</TD>
+<TD>zus&auml;tzlich zu den Lokomotiven (lokomotive.cs2) die Magnetartikel
+(keyboard) abfragen, wenn "zentrale=0" und eine CS2 Master erkannt wurde.</TD>
+</TR>
+<TR>
+<TD>4 (0x0004)</TD>
+<TD>layout</TD>
+<TD>zus&auml;tzlich zu den Lokomotiven (lokomotive.cs2) die Gleispl&auml;ne
+(layout) abfragen, wenn "zentrale=0" und eine CS2 Master erkannt wurde.</TD>
+</TR>
+<TR>
+<TD>8 (0x0008)</TD>
+<TD>mem</TD>
+<TD>zus&auml;tzlich die zu den Lokomotiven (lokomotive.cs2) Fahrstra&szlig;en
+(memory) abfragen, wenn "zentrale=0" und eine CS2 Master erkannt wurde.</TD>
+</TR>
+<TR>
+<TD>16 (0x0010)</TD>
+<TD>contr</TD>
+<TD>zus&auml;tzlich zu den Lokomotiven (lokomotive.cs2) die Statusdaten
+abfragen, wenn "zentrale=0" und eine CS2 Master erkannt wurde.</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>conn_tcp</TD>
+<TD NOWRAP>0</TD>
+<TD>Dies gibt an, ob der client cs2sl, der sich mit einer CS2 bzw. einem dazu
+kompatiblen Server verbinden kann, eine TCP Verbindung &ouml;ffen soll.
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Bedeutung</TH></TR>
+<TR><TD>0</TD><TD>keine TCP Verbindung</TD></TR>
+<TR><TD>1</TD><TD>TCP Verbindung</TD></TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>wakeup_s88</TD>
+<TD NOWRAP>"0"</TD>
+<TD>Dies beschreibt, ob die M&auml;rklin S88 Module gestartet werden sollen.
+Der Wert von "0" bedeutet nein. Ansonsten entspricht der Wert dem Parameter
+"-c" des Programms "wake-up-links88" von Gerhard Bertelsmann:
+<PRE>-c &lt;config_string&gt;  config string "B1=1,B2=3"</PRE>
+Als Defaultwert kann "B3=1" benutzt werden.</TD>
+</TR>
+<TR>
+<TD>gpio_s88</TD>
+<TD NOWRAP>""</TD>
+<TD>Dies sind die Kommandozeilenparameter f&uuml;r den client_gpios88, so wie
+sie auch das Programm "s88udp-bpi" von Gerhard Bertelsmann erwartet.</TD>
+</TR>
+<TR>
+<TD>hide_ms2</TD>
+<TD>0</TD>
+<TD>
+Dieser Wert bestimmt, ob eine angeschlossene MS2 auf der Ethernet Seite
+sichtbar ist.
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Bedeutung</TH></TR>
+<TR>
+<TD>0</TD>
+<TD>Die MS2 ist nicht versteckt. Pings (Nachricht <VAL>"member"</VAL>) der MS2
+werden auch auf Ethernet weitergeleitet.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>Die MS2 ist versteckt. Pings (Nachricht <VAL>"member"</VAL>) der MS2 werden
+nicht auf Ethernet weitergeleitet. Damit ist die MS2 f&uuml;r einen &uuml;ber
+Ethernet verbundenen Client nicht sichtbar. Diese Einstellung mu&szlig;
+verwendet werden, wenn Win-Digipet als Steuerungssoftware benutzt wird.</TD>
+</TR>
+</TABLE>
+</TR>
+<TR>
+<TD>emu_host_com</TD>
+<TD>7970</TD>
+<TD>Dies ist die Portnummer, auf welcher der client_cceth auf Anfragen des
+virtuellen COM Port Treiber von HW group wartet.</TD>
+</TR>
+<TR>
+<TD>serial_line</TD>
+<TD>"tty0,500000"</TD>
+<TD>Dies ist der Name des seriellen Interface, auf dem der client_tty auf
+Anfragen eines Computers wartet. Durch ein Komma getrennt wird die
+gew&uuml;nschte Geschwindigkeit der Schnittstelle angegeben. Das Protokoll
+entspricht dem der CC-Schnitte. Jeweils 13 aufeinanderfolgende Bytes sind 
+ein CAN Frame.</TD>
+</TR>
+<TR>
+<TD>num_lokfkt</TD>
+<TD>32</TD>
+<TD>Dies ist die Anzahl der Lokfunktionen, die in die <VAR>lokomotive.cs2</VAR>
+geschrieben werden. Damit kann die Anzahl der Lokfunktionen von aktuell 32 auf
+16 beschr&auml;nkt werden, wenn Software nicht mit 32 Lokfunktionen zurecht
+kommt.</TD>
+</TR>
+<TR>
+<TD>write_web</TD>
+<TD>1</TD>
+<TD>Dieser Wert bestimmt, ob die erkannten CAN Member, die Messwerte dieser
+CAN Member (sofern vorhanden) und die Konfigwerte dieser CAN Member (sofern
+vorhanden) f&uuml;r die Weboberfl&auml;che geschrieben werden. Dazu werden
+Konfigdateien f&uuml;r <VAR>uci</VAR> geschrieben, womit auch die Seiten
+f&uuml;r die <VAR>mrsystem</VAR> Konfiguration erstellt wurden.
+<TABLE BORDER="1">
+<TR><TH>Wert</TH><TH>Bedeutung</TH></TR>
+<TR>
+<TD>0</TD>
+<TD>Die Webseiten werden nicht geschrieben.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>Die Webseiten werden geschrieben.</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+<P>
+<HR>
+<P>
+<CENTER>
+<A HREF="bbb.htm">Zur&uuml;ck zum BBB</A> -
+<A HREF="index.htm">Zur&uuml;ck zur Modellbahn Startseite</A> -
+<A HREF="../index.htm">Zur&uuml;ck zur Homepage</A>
+</CENTER>
+</BODY>
+</HTML>

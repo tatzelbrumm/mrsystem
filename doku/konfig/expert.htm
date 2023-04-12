@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<LINK HREF="../../../mrsystem.css" REL="stylesheet">
+<TITLE>F&uuml;r Experten</TITLE>
+</HEAD>
+<BODY>
+<DIV CLASS="odiv">
+<H1>F&uuml;r Experten</H1>
+</DIV>
+<P>
+Wenn der Minicomputer nicht permanet l&auml;uft, k&ouml;nnen die Logfiles in
+eine Ramdisk gelegt werden. Damit beanspruchen sie RAM und stehen nach einem
+Crash bzw. Reboot nicht mehr zur Verf&uuml;gung. Aber es wird die SD-Karte
+weniger mit Schreibzugriffen belastet.
+<P>
+Um die Logfiles in eine Ramdisk zu legen, mu&szlig; in der Datei
+<VAR>/etc/fstab</VAR> der folgende Eintrag hinzugef&uuml;gt werden:
+<PRE>tmpfs	/var/log	tmpfs	defaults	0	0</PRE>
+Danach kann der Inhalt des Verzeichnis <VAR>/var/log</VAR> gel&ouml;scht
+werden und der Computer neu gestartet werden.
+<P>
+<HR>
+<P>
+<CENTER>
+<A HREF="bbb.htm">Zur&uuml;ck zum BBB</A> -
+<A HREF="index.htm">Zur&uuml;ck zur Modellbahn Startseite</A> -
+<A HREF="../index.htm">Zur&uuml;ck zur Homepage</A>
+</CENTER>
+</BODY>
+</HTML>

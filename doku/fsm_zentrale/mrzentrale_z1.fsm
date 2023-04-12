@@ -1,0 +1,142 @@
+<?xml version='1.0'?>
+<!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
+<qfsmproject version="0.54" author="Qfsm">
+  <machine nummooreout="8" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="mrzentrale z1" arrowtype="1" numbits="6" statefontweight="50" statefont="Helvetica" numin="8" transfontsize="8" transfontweight="50" type="1" numout="8" initialstate="0">
+    <outputnames_moore>s_out7,s_out6,s_out5,s_out4,s_out3,s_out2,s_out1,s_out0</outputnames_moore>
+    <inputnames>i_7,i_6,i_5,i_4,i_3,i_2,i_1,i_0</inputnames>
+    <outputnames>o_7,o_6,o_5,o_4,o_3,o_2,o_1,o_0</outputnames>
+    <itransition ypos="192,6399999999999" endx="233,4" xpos="183,4" endy="192,6399999999999"/>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="192,64" code="0" xpos="283,4" linewidth="1">WAIT_FOR_MS2</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="195,04" code="1" xpos="490" linewidth="1">WAIT_LOKNAME_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="194,64" code="2" xpos="716,4" linewidth="1">WAIT_LOKNAME_CFG_DATA</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="337,44" code="3" xpos="722,8000000000001" linewidth="1">WAIT_LOKINFO_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="333,24" code="4" xpos="491,4" linewidth="1">WAIT_LOKINFO_CFG_DATA</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="328,6400000000001" code="5" xpos="283,6" linewidth="1">WAIT_CFG_DATA</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="473,04" code="7" xpos="283,2" linewidth="1">NORMAL</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="479,04" code="27" xpos="463" linewidth="1">WAIT_CFG_DATA_HDR</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="489,04" code="28" xpos="632" linewidth="1">WAIT_CFG_DATA_DATA</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="489,04" code="29" xpos="780" linewidth="1">WAIT_SYS_CFG_MESSWERT</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="610,04" code="30" xpos="448" linewidth="1">WAIT_MS2_LOKNAME_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="617,04" code="31" xpos="611" linewidth="1">WAIT_MS2_LOKNAME_CFG_DATA</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="618,04" code="32" xpos="770" linewidth="1">WAIT_MS2_LOKINFO_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="619,04" code="33" xpos="952" linewidth="1">WAIT_MS2_LOKINFO_CFG_DATA</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="195,04" code="6" xpos="490" linewidth="1">WAIT_LOKNAME_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="195,04" code="8" xpos="490" linewidth="1">WAIT_LOKNAME_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="195,04" code="9" xpos="490" linewidth="1">WAIT_LOKNAME_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="66" code="34" xpos="487,6" linewidth="1">WAIT_LOKLISTE_CFG_HDR</state>
+    <state pencolor="0" exit_actions="" radius="50" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="67,59999999999999" code="35" xpos="721,2" linewidth="1">WAIT_LOKLISTE_CFG_DATA</state>
+    <transition c1x="368,9329694064899" c2y="194,1621192303586" c1y="193,2842384607173" description="" straight="1" type="1" ypos="192,406357691076" endx="440" xpos="333,3994541097348" endy="195,04" c2x="404,4664847032449">
+      <from>0</from>
+      <to>1</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdMember</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="364,2302403544703" c2y="111,3507774249274" c1y="138,8191915195028" description="" straight="1" type="1" ypos="166,2876056140781" endx="440,9071624151917" xpos="325,8917793241096" endy="83,88236333035209" c2x="402,5687013848311">
+      <from>0</from>
+      <to>34</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdMember(MS2>=3.00)</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="582,1304981563422" c2y="194,9907061473964" c1y="195,3414122947928" description="" straight="1" type="1" ypos="195,6921184421892" endx="666,4" xpos="539,9957472345134" endy="194,64" c2x="624,2652490781711">
+      <from>1</from>
+      <to>2</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="582,0976382124398" c2y="195,5444365340425" c1y="196,4488730680849" description="" straight="1" type="1" ypos="197,3533096021274" endx="666,4" xpos="539,9464573186598" endy="194,64" c2x="624,2488191062199">
+      <from>1</from>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="720,5743931166618" c2y="279,2711689733864" c1y="261,9023379467728" description="" straight="1" type="1" ypos="244,5335069201593" endx="722,4" xpos="719,6615896749927" endy="296,64" c2x="721,4871965583309">
+      <from>2</from>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgData</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="628,9968390542929" c2y="335,5608706989822" c1y="335,8833394805206" description="" straight="1" type="1" ypos="336,2058082620591" endx="541,3600479360895" xpos="672,8152346133945" endy="335,2384019174437" c2x="585,1784434951911">
+      <from>3</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="405,5793041244597" c2y="328,8043486131875" c1y="328,968697226375" description="" straight="1" type="1" ypos="329,1330458395624" endx="333,6" xpos="441,5689561866896" endy="328,6400000000001" c2x="369,5896520622299">
+      <from>4</from>
+      <to>5</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgData</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="284,1990909488866" c2y="408,235976178921" c1y="393,4319523578418" description="" straight="1" type="1" ypos="378,6279285367627" endx="283,2000012626263" xpos="284,6986357920168" endy="423,04" c2x="283,6995461057564">
+      <from>5</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmfCdgData</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="363,155048874347" c2y="478,5613277476937" c1y="475,8006638738469" description="neue Member entdeckt" straight="1" type="1" ypos="473,04" endx="423,0651466230411" xpos="333,2" endy="481,3219916215405" c2x="393,110097748694">
+      <from>7</from>
+      <to>27</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdMember</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="506,9976476706473" c2y="546,5683176460686" c1y="539,3082003577681" description="" straight="0" type="1" ypos="480,0480830694675" endx="592,0183528341847" xpos="502,9872950888786" endy="487,8284349343692" c2x="579,008000252416">
+      <from>27</from>
+      <to>28</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdStatusSize</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="681,3323074358329" c2y="544,8236212314437" c1y="544,6072424628874" description="letztes Paket" straight="0" type="1" ypos="489,3908636943311" endx="740" xpos="671,9984611537494" endy="489,04" c2x="733,6661537179165">
+      <from>28</from>
+      <to>29</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdStatus</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="744,5462018854703" c2y="420,5532455795309" c1y="419,7966227897655" description="" straight="0" type="1" ypos="449,04" endx="636,6386033034697" xpos="780,0000011764706" endy="449,3098683692963" c2x="673,0924025944701">
+      <from>29</from>
+      <to>28</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdMesswertResponse</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="686,7157597239888" c2y="426,4322912796954" c1y="407,2570975522341" description="" straight="0" type="1" ypos="449,065485826098" endx="284,1522082318586" xpos="778,5723387795035" endy="423,0490678274231" c2x="380,4390501208291">
+      <from>29</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdMesswertResponse</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="651,4107009446985" c2y="679,4197602280926" c1y="678,3015334167291" description="" straight="0" type="1" ypos="655,1833066053656" endx="759,1415933991277" xpos="623,0452547174839" endy="656,5379870394561" c2x="723,7761471719131">
+      <from>31</from>
+      <to>32</to>
+      <inputs default="0" any="0" invert="0">MrIpcCCmdCfgData</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="813,5759893619498" c2y="676,5133009502406" c1y="678,5256439948483" description="" straight="0" type="1" ypos="656,5379870394561" endx="941,0111548841048" xpos="780,8584066008723" endy="657,5009579056328" c2x="902,2935721230273">
+      <from>32</from>
+      <to>33</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="679,6460312959597" c2y="677,5533314734698" c1y="784,4096859897234" description="" straight="0" type="1" ypos="651,2660405059769" endx="255,5468578496776" xpos="975,6956180191007" endy="514,6969769572164" c2x="208,5964445728187">
+      <from>33</from>
+      <to>7</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmfCdgData</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="582,1348658082343" c2y="67,73629765134621" c1y="67,03937768599276" description="" straight="1" type="1" ypos="66,34245772063932" endx="671,2069429980201" xpos="537,5988272133415" endy="68,43321761669965" c2x="626,6709044031272">
+      <from>34</from>
+      <to>35</to>
+      <inputs default="0" any="0" invert="0">MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="280,4675036732692" c2y="629,0748626456598" c1y="560,8171981126322" straight="0" type="1" ypos="524,04" endx="408,0274066493293" xpos="282" endy="611,5204664203952" c2x="284,9624139958677">
+      <to>30</to>
+      <inputs>PeriodicPollMS2</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="514,3333333333333" c2y="678,04" c1y="678,04" straight="0" type="1" ypos="651,04" endx="609" xpos="476" endy="657,04" c2x="558,6666666666666">
+      <inputs>MrIpcCmdCfgHeader</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="845,8446712938381" c2y="300,0134374171728" c1y="106,2067187085864" straight="0" type="1" ypos="70,8" endx="774" xpos="772,8" endy="336" c2x="846,8893425876764">
+      <inputs>MrIpcCmdCfgData</inputs>
+      <outputs></outputs>
+    </transition>
+  </machine>
+</qfsmproject>

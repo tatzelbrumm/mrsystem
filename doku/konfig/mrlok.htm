@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<LINK HREF="../../../mrsystem.css" REL="stylesheet">
+<TITLE>Die Konfigurationsdatei /etc/mrlok</TITLE>
+</HEAD>
+<BODY>
+<DIV CLASS="odiv">
+<H1>Die Konfigurationsdatei /etc/mrlok</H1>
+</DIV>
+<P>
+Die Datei <VAR>/etc/mrlok</VAR> beschreibt, welche Aktionen f&uuml;r eine
+spezielle Lok ausgef&uuml;hrt werden sollen.
+<P>
+Die erste Zeile enth&auml;lt die Adresse der Lok und durch ein Komma getrennt
+den Loknamen.
+<P>
+Jede weiter Zeile der Datei enth&auml;lt den Namen der Funktionstaste und
+durch ein Komma getrennt die auszuf&uuml;hrende Aktion. Ein Beispiel sieht wie
+folgt aus:
+<P>
+<PRE>1,LOKLISTE
+F1,POSIXLY_CORRECT=1 /usr/local/bin/mrinjectipc 25 -1 -1 0 0 1 0 0 0 0
+F2,sudo /etc/init.d/mrsystem restart
+F3,sudo /sbin/reboot -f
+F4,sudo /sbin/halt -f</PRE>
+<P>
+<HR>
+<P>
+<CENTER>
+<A HREF="bbb.htm">Zur&uuml;ck zum BBB</A> -
+<A HREF="index.htm">Zur&uuml;ck zur Modellbahn Startseite</A> -
+<A HREF="../index.htm">Zur&uuml;ck zur Homepage</A>
+</CENTER>
+</BODY>
+</HTML>

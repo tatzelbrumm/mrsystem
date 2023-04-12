@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<LINK HREF="../../mrsystem.css" REL="stylesheet">
+<TITLE>Client_INJECTIPC</TITLE>
+</HEAD>
+<BODY>
+<DIV CLASS="odiv">
+<H1>Client_INJECTIPC</H1>
+</DIV>
+<P>
+<H2>Daemon</H2>
+<P>
+<TABLE BORDER="1">
+<TR><TH>Daemon</TH><TD>mrinjectipc</TD></TR>
+<TR><TH>Projekt</TH><TD>client_injectipc</TD></TR>
+</TABLE>
+<P>
+<H2>Parameter</H2>
+<P>
+Der Aufruf ist:
+<PRE>mrinjectipc ([-v] [-a &lt;addr&gt; | -i &lt;iface&gt;] -p &lt;port&gt; [-v] (&lt;file&gt; | &lt;parm&gt; | -?)</PRE>
+Die Kommandozeilenparameter sind:
+<P>
+<TABLE BORDER="1">
+<TR><TH>Parameter</TH><TH>Beschreibung</TH></TR>
+<TR><TD>-a &lt;addr&gt;</TD><TD>Adresse der Servers, mit dem eine Verbindung
+aufgebaut weden soll</TD></TR>
+<TR><TD>-i &lt;iface&gt;</TD><TD>Interface, auf dem auf Verbindungen von
+andere Clients zu drehscheibe gewartet wird.</TD></TR>
+<TR><TD>-p &lt;port&gt;</TD><TD>Port der Servers, mit dem eine Verbindung
+aufgebaut weden soll</TD></TR>
+<TR><TD>-v</TD><TD>optional, mit zus&auml;tzluchen Ausgaben (verbose)
+starten</TD></TR>
+<TR><TD>-?</TD><TD>optional, gibt eine kurze Hilfe aus</TD></TR>
+<TR><TD>&lt;file&gt;</TD><TD>Dateiname mit Kommandos, Der Syntax entspricht dem
+&lt;parm&gt;</TD></TR>
+<TR><TD>&lt;parm&gt;</TD><TD>Zu versendender IPC Frame. Der Syntax ist<BR>
+&lt;Command&gt;&nbsp;&lt;SenderSocket&gt;&nbsp;&lt;ReceiverSocket&gt;&nbsp;&lt;CanResponse&gt;&nbsp;&lt;CanHash&gt;&nbsp;&lt;CanCommand&gt;&nbsp;&lt;CanPrio&gt;&nbsp;&lt;Lp1&gt;&nbsp;&lt;Ip1&gt;&nbsp;&lt;Ip2&gt;</TD></TR>
+</TABLE>
+<P>
+<H2>Beschreibung</H2>
+<P>
+Der Daemon <VAR>mrinjectipc</VAR> dient dazu, interne Nachrichten an den
+Server <VAR>drehscheibe</VAR> zu schicken.
+</BODY>
+</HTML>

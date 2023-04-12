@@ -1,0 +1,4 @@
+# /etc/default/maecanserver
+
+# Set to '0' to explicitly disable starting maecanserver
+ENABLED=0

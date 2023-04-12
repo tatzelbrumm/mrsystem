@@ -1,0 +1,5 @@
+1,LOKLISTE
+F1,POSIXLY_CORRECT=1 /usr/local/bin/mrinjectipc 25 -1 -1 0 0 1 0 0 0 0
+F2,sudo /etc/init.d/mrsystem restart
+F3,sudo /sbin/reboot -f
+F4,sudo /sbin/halt -f

@@ -1,0 +1,14 @@
+drehscheibe start
+mrcc stop
+mrcs2eth start
+mrcs2sl stop
+startmrgpios88 stop
+mrcceth stop
+mrms1 stop
+mrms2 start
+mrms24l stop
+mrslcan stop
+mrsrcp stop
+mrzentrale start
+mrtty stop
+mrlok stop

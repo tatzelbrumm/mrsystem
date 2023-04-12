@@ -1,0 +1,204 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          mrsystem
+# Required-Start:    $can $network
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start can interface
+# Description:       This file starts the model railroad daemons
+### END INIT INFO
+
+# Author: Michael Bernstein <Michael_Bernstein@mbernstein.de>
+
+# Do NOT "set -e"
+
+# PATH should only include /usr/* if it runs after the mountnfs.sh script
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="Start model railroad system"
+NAME=mrsystem
+SCRIPTNAME=/etc/init.d/$NAME
+DAEMONPATH=/usr/local/bin
+ENABLED=1
+
+# Read configuration variable file if it is present
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+# Exit if explicitly told to
+[ "$ENABLED" != "0" ] || exit 0
+
+# Load the VERBOSE setting and other rcS variables
+. /lib/init/vars.sh
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.2-14) to ensure that this file is present
+# and status_of_proc is working.
+. /lib/lsb/init-functions
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+	# Return
+	#   0 if daemon has been started
+	#   1 if daemon was already running
+	#   2 if daemon could not be started
+
+	WEBPATH=`fgrep cs2_path /etc/mrsystem | cut -f 2 -d '"'`
+	WEBPATH="$WEBPATH/.."
+
+	if [ -L $WEBPATH/member ] ; then
+		if [ ! -d /tmp/member ] ; then
+			mkdir /tmp/member
+			chmod 777 /tmp/member
+		fi
+	fi
+	if [ -L $WEBPATH/messwert ] ; then
+		if [ ! -d /tmp/messwert ] ; then
+			mkdir /tmp/messwert
+			chmod 777 /tmp/messwert
+		fi
+	fi
+	if [ -L $WEBPATH/konfig ] ; then
+		if [ ! -d /tmp/konfig ] ; then
+			mkdir /tmp/konfig
+			chmod 777 /tmp/konfig
+		fi
+	fi
+	if [ -L $WEBPATH/config.cs2 ] ; then
+		if [ ! -f /tmp/config.cs2 ] ; then
+			touch /tmp/config.cs2
+			chmod 777 /tmp/config.cs2
+		fi
+	fi
+
+	startfile=/etc/mrstart
+	ZEILE=`fgrep drehscheibe $startfile`
+	service=`echo $ZEILE | cut -f 1 -d " "`
+	action=`echo $ZEILE | cut -f 2 -d " "`
+	if [ "x$action" = "xstart" ] ; then
+		echo "start $service"
+		start-stop-daemon --start --background --exec $DAEMONPATH/$service
+		sleep 1
+	else
+		echo "dont start $service"
+	fi
+
+	while read ZEILE ; do
+		service=`echo $ZEILE | cut -f 1 -d " "`
+		if [ ! "x$service" = "xdrehscheibe" ] ; then
+			action=`echo $ZEILE | cut -f 2 -d " "`
+			if [ "x$action" = "xstart" ] ; then
+				echo "start $service"
+				start-stop-daemon --start --background --exec $DAEMONPATH/$service
+			else
+				echo "dont start $service"
+			fi
+		fi
+	done < /etc/mrstart
+	return 0
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+	# Return
+	#   0 if daemon has been stopped
+	#   1 if daemon was already stopped
+	#   2 if daemon could not be stopped
+	#   other if a failure occurred
+
+	while read ZEILE ; do
+		service=`echo $ZEILE | cut -f 1 -d " "`
+		if [ ! "x$service" = "xdrehscheibe" ] ; then
+			pid=`ps -A | fgrep $service`
+			if [ ! "x$pid" = "x" ] ; then
+				echo "stop $service"
+				start-stop-daemon --stop --exec $DAEMONPATH/$service
+			fi
+		fi
+	done < /etc/mrstart
+
+	pid=`ps -A | fgrep drehscheibe`
+	if [ ! "x$pid" = "x" ] ; then
+		start-stop-daemon --stop --exec $DAEMONPATH/drehscheibe
+	fi
+	return 0
+}
+
+#
+# Function that sends a SIGHUP to the daemon/service
+#
+do_reload() {
+	#
+	# If the daemon can reload its configuration without
+	# restarting (for example, when it is sent a SIGHUP),
+	# then implement that here.
+	#
+	ifconfig can0 down
+	ifconfig can0 up
+	return 0
+}
+
+case "$1" in
+  start)
+	[ "$VERBOSE" != no ] && log_daemon_msg "Starting $DESC" "$NAME"
+	do_start
+	case "$?" in
+		0|1) [ "$VERBOSE" != no ] && log_end_msg 0 ;;
+		2) [ "$VERBOSE" != no ] && log_end_msg 1 ;;
+	esac
+	;;
+  stop)
+	[ "$VERBOSE" != no ] && log_daemon_msg "Stopping $DESC" "$NAME"
+	do_stop
+	case "$?" in
+		0|1) [ "$VERBOSE" != no ] && log_end_msg 0 ;;
+		2) [ "$VERBOSE" != no ] && log_end_msg 1 ;;
+	esac
+	;;
+  status)
+	ip -s -d link show can0 && exit 0 || exit $?
+       ;;
+  #reload|force-reload)
+	#
+	# If do_reload() is not implemented then leave this commented out
+	# and leave 'force-reload' as an alias for 'restart'.
+	#
+	#log_daemon_msg "Reloading $DESC" "$NAME"
+	#do_reload
+	#log_end_msg $?
+	#;;
+  restart|force-reload)
+	#
+	# If the "reload" option is implemented then remove the
+	# 'force-reload' alias
+	#
+	log_daemon_msg "Restarting $DESC" "$NAME"
+	do_stop
+	case "$?" in
+	  0|1)
+		do_start
+		case "$?" in
+			0) [ "$VERBOSE" != no ] && log_end_msg 0 ;;
+			1) [ "$VERBOSE" != no ] && log_end_msg 1 ;; # Old process is still running
+			*) [ "$VERBOSE" != no ] && log_end_msg 1 ;; # Failed to start
+		esac
+		;;
+	  *)
+	  	# Failed to stop
+		log_end_msg 1
+		;;
+	esac
+	;;
+  *)
+	#echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
+	echo "Usage: $SCRIPTNAME {start|stop|status|restart|force-reload}" >&2
+	exit 3
+	;;
+esac
+
+:

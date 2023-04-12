@@ -1,0 +1,4 @@
+# /etc/default/rocrail
+
+# Set to '0' to explicitly disable starting rocrail server
+ENABLED=0

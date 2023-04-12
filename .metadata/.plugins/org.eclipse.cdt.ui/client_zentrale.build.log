@@ -1,0 +1,435 @@
+20:39:39 **** Build of configuration Release for project client_zentrale ****
+make all 
+if [ ! -d include ] ; then mkdir include ; fi
+if [ ! -d lib ] ; then mkdir lib ; fi
+make -C libs CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/libs'
+make -C cs2_parse  CFLAGS="-Wall"  INCLUDE_PATH=../../include LIB_PATH=../../lib
+make[2]: Entering directory `/home/michael/src/modellbahn/mrsystem/libs/cs2_parse'
+cc -Wall -I../../include -c cs2p_create.c
+cc -Wall -I../../include -c cs2p_destroy.c
+cc -Wall -I../../include -c cs2p_init.c
+cc -Wall -I../../include -c cs2p_parse.c
+cc -Wall -I../../include -c write_cs2.c
+ar rvs libcs2_parse.a cs2p_create.o cs2p_destroy.o cs2p_init.o cs2p_parse.o write_cs2.o
+a - cs2p_create.o
+a - cs2p_destroy.o
+ar: creating libcs2_parse.a
+a - cs2p_init.o
+a - cs2p_parse.o
+a - write_cs2.o
+cp libcs2_parse.a  ../../lib
+cp cs2parse.h ../../include
+cp write_cs2.h ../../include
+cp cs2_types.h ../../include
+make[2]: Leaving directory `/home/michael/src/modellbahn/mrsystem/libs/cs2_parse'
+make -C mr_can  CFLAGS="-Wall"  INCLUDE_PATH=../../include LIB_PATH=../../lib
+make[2]: Entering directory `/home/michael/src/modellbahn/mrsystem/libs/mr_can'
+cc -Wall -I../../include -c enceth.c
+cc -Wall -I../../include -c deceth.c
+cc -Wall -I../../include -c sendeth.c
+cc -Wall -I../../include -c sendtoeth.c
+cc -Wall -I../../include -c recveth.c
+cc -Wall -I../../include -c starteth.c
+cc -Wall -I../../include -c starteth_bc.c
+cc -Wall -I../../include -c mk_bcaddr.c
+cc -Wall -I../../include -c starteth_tcp.c
+cc -Wall -I../../include -c accept_tcp.c
+cc -Wall -I../../include -c cs2_encode.c
+cc -Wall -I../../include -c cs2_decode.c
+cc -Wall -I../../include -c trace.c
+cc -Wall -I../../include -c calc_hash.c
+cc -Wall -I../../include -c calc_hash_fnr.c
+cc -Wall -I../../include -c crc.c
+cc -Wall -I../../include -c iscs2msg.c
+cc -Wall -I../../include -c encode_id.c
+cc -Wall -I../../include -c decode_id.c
+cc -Wall -I../../include -c conn_eth.c
+cc -Wall -I../../include -c conn_tcp.c
+cc -Wall -I../../include -c cand0000.c
+cc -Wall -I../../include -c cand0001.c
+cc -Wall -I../../include -c cand0002.c
+cc -Wall -I../../include -c cand0003.c
+cc -Wall -I../../include -c cand0004.c
+cc -Wall -I../../include -c cand0005.c
+cc -Wall -I../../include -c cand0006.c
+cc -Wall -I../../include -c cand0007.c
+cc -Wall -I../../include -c cand0008.c
+cc -Wall -I../../include -c cand0009.c
+cc -Wall -I../../include -c cand000a.c
+cc -Wall -I../../include -c cand000b.c
+cc -Wall -I../../include -c cand000c.c
+cc -Wall -I../../include -c cand0080.c
+cc -Wall -I../../include -c cane0000.c
+cc -Wall -I../../include -c cane0001.c
+cc -Wall -I../../include -c cane0002.c
+cc -Wall -I../../include -c cane0003.c
+cc -Wall -I../../include -c cane0004.c
+cc -Wall -I../../include -c cane0005.c
+cc -Wall -I../../include -c cane0006.c
+cc -Wall -I../../include -c cane0007.c
+cc -Wall -I../../include -c cane0008.c
+cc -Wall -I../../include -c cane0009.c
+cc -Wall -I../../include -c cane000a.c
+cc -Wall -I../../include -c cane000b.c
+cc -Wall -I../../include -c cane000c.c
+cc -Wall -I../../include -c cane0080.c
+cc -Wall -I../../include -c cand01.c
+cc -Wall -I../../include -c cand02.c
+cc -Wall -I../../include -c cand03.c
+cc -Wall -I../../include -c cand04.c
+cc -Wall -I../../include -c cand05.c
+cc -Wall -I../../include -c cand06.c
+cc -Wall -I../../include -c cand07.c
+cc -Wall -I../../include -c cand08.c
+cc -Wall -I../../include -c cand0b.c
+cc -Wall -I../../include -c cand10.c
+cc -Wall -I../../include -c cand11.c
+cc -Wall -I../../include -c cand18.c
+cc -Wall -I../../include -c cand1b.c
+cc -Wall -I../../include -c cand1d.c
+cc -Wall -I../../include -c cand20.c
+cc -Wall -I../../include -c cand21.c
+cc -Wall -I../../include -c cand30.c
+cc -Wall -I../../include -c cane01.c
+cc -Wall -I../../include -c cane02.c
+cc -Wall -I../../include -c cane03.c
+cc -Wall -I../../include -c cane04.c
+cc -Wall -I../../include -c cane05.c
+cc -Wall -I../../include -c cane06.c
+cc -Wall -I../../include -c cane07.c
+cc -Wall -I../../include -c cane08.c
+cc -Wall -I../../include -c cane0b.c
+cc -Wall -I../../include -c cane10.c
+cc -Wall -I../../include -c cane11.c
+cc -Wall -I../../include -c cane18.c
+cc -Wall -I../../include -c cane1b.c
+cc -Wall -I../../include -c cane1d.c
+cc -Wall -I../../include -c cane20.c
+cc -Wall -I../../include -c cane21.c
+cc -Wall -I../../include -c cane30.c
+ar rvs libmr_can.a enceth.o deceth.o sendeth.o sendtoeth.o recveth.o starteth.o starteth_bc.o mk_bcaddr.o starteth_tcp.o accept_tcp.o cs2_encode.o cs2_decode.o trace.o calc_hash.o calc_hash_fnr.o crc.o iscs2msg.o encode_id.o decode_id.o conn_eth.o conn_tcp.o cand0000.o cand0001.o cand0002.o cand0003.o cand0004.o cand0005.o cand0006.o cand0007.o cand0008.o cand0009.o cand000a.o cand000b.o cand000c.o cand0080.o cane0000.o cane0001.o cane0002.o cane0003.o cane0004.o cane0005.o cane0006.o cane0007.o cane0008.o cane0009.o cane000a.o cane000b.o cane000c.o cane0080.o cand01.o cand02.o cand03.o cand04.o cand05.o cand06.o cand07.o cand08.o cand0b.o cand10.o cand11.o cand18.o cand1b.o cand1d.o cand20.o cand21.o cand30.o cane01.o cane02.o cane03.o cane04.o cane05.o cane06.o cane07.o cane08.o cane0b.o cane10.o cane11.o cane18.o cane1b.o cane1d.o cane20.o cane21.o cane30.o
+ar: creating libmr_can.a
+encode_can.c: In function ‘MrIpcEncodeFromCan’:
+encode_can.c:365:13: warning: pointer targets in passing argument 3 of ‘MrIpcCmdSetCanBootldr’ differ in signedness [-Wpointer-sign]
+a - enceth.o
+a - deceth.o
+a - sendeth.o
+a - sendtoeth.o
+a - recveth.o
+a - starteth.o
+a - starteth_bc.o
+a - mk_bcaddr.o
+a - starteth_tcp.o
+a - accept_tcp.o
+a - cs2_encode.o
+a - cs2_decode.o
+a - trace.o
+a - calc_hash.o
+a - calc_hash_fnr.o
+a - crc.o
+a - iscs2msg.o
+In file included from encode_can.c:2:0:
+mr_ipc.h:136:6: note: expected ‘unsigned char *’ but argument is of type ‘char *’
+a - encode_id.o
+a - decode_id.o
+a - conn_eth.o
+a - conn_tcp.o
+a - cand0000.o
+a - cand0001.o
+a - cand0002.o
+a - cand0003.o
+a - cand0004.o
+a - cand0005.o
+a - cand0006.o
+a - cand0007.o
+a - cand0008.o
+a - cand0009.o
+a - cand000a.o
+a - cand000b.o
+a - cand000c.o
+a - cand0080.o
+a - cane0000.o
+a - cane0001.o
+a - cane0002.o
+a - cane0003.o
+a - cane0004.o
+a - cane0005.o
+a - cane0006.o
+a - cane0007.o
+a - cane0008.o
+a - cane0009.o
+a - cane000a.o
+a - cane000b.o
+a - cane000c.o
+a - cane0080.o
+a - cand01.o
+a - cand02.o
+a - cand03.o
+a - cand04.o
+a - cand05.o
+a - cand06.o
+a - cand07.o
+a - cand08.o
+a - cand0b.o
+a - cand10.o
+a - cand11.o
+a - cand18.o
+a - cand1b.o
+a - cand1d.o
+a - cand20.o
+a - cand21.o
+a - cand30.o
+a - cane01.o
+a - cane02.o
+a - cane03.o
+a - cane04.o
+a - cane05.o
+a - cane06.o
+a - cane07.o
+a - cane08.o
+a - cane0b.o
+a - cane10.o
+a - cane11.o
+a - cane18.o
+a - cane1b.o
+a - cane1d.o
+a - cane20.o
+a - cane21.o
+a - cane30.o
+cp libmr_can.a  ../../lib
+cp mr_can.h ../../include
+cp m_cs2ms2.h ../../include
+make[2]: Leaving directory `/home/michael/src/modellbahn/mrsystem/libs/mr_can'
+make -C mr_ipc  CFLAGS="-Wall"  INCLUDE_PATH=../../include LIB_PATH=../../lib
+make[2]: Entering directory `/home/michael/src/modellbahn/mrsystem/libs/mr_ipc'
+cc -Wall -I../../include -c create.c
+cc -Wall -I../../include -c destroy.c
+cc -Wall -I../../include -c init.c
+cc -Wall -I../../include -c exit.c
+cc -Wall -I../../include -c connect.c
+cc -Wall -I../../include -c connect_if.c
+cc -Wall -I../../include -c server.c
+cc -Wall -I../../include -c server_if.c
+cc -Wall -I../../include -c accept.c
+cc -Wall -I../../include -c send.c
+cc -Wall -I../../include -c receive.c
+cc -Wall -I../../include -c encode_can.c
+cc -Wall -I../../include -c decode_can.c
+cc -Wall -I../../include -c cmd_set_null.c
+cc -Wall -I../../include -c cmd_get_null.c
+cc -Wall -I../../include -c cmd_set_run.c
+cc -Wall -I../../include -c cmd_get_run.c
+cc -Wall -I../../include -c cmd_set_track_proto.c
+cc -Wall -I../../include -c cmd_get_track_proto.c
+cc -Wall -I../../include -c cmd_set_cfg_zheader.c
+cc -Wall -I../../include -c cmd_set_locomotive_dir.c
+cc -Wall -I../../include -c cmd_set_locomotive_speed.c
+cc -Wall -I../../include -c cmd_set_locomotive_fkt.c
+cc -Wall -I../../include -c cmd_get_locomotive_dir.c
+cc -Wall -I../../include -c cmd_get_locomotive_speed.c
+cc -Wall -I../../include -c cmd_get_locomotive_fkt.c
+cc -Wall -I../../include -c cmd_set_acc_pos.c
+cc -Wall -I../../include -c cmd_set_query.c
+cc -Wall -I../../include -c cmd_get_acc_pos.c
+cc -Wall -I../../include -c cmd_set_member.c
+cc -Wall -I../../include -c cmd_get_member.c
+cc -Wall -I../../include -c cmd_set_get_member.c
+cc -Wall -I../../include -c cmd_set_get_locname.c
+cc -Wall -I../../include -c cmd_get_get_locname.c
+cc -Wall -I../../include -c cmd_set_get_locinfo.c
+cc -Wall -I../../include -c cmd_get_get_locinfo.c
+cc -Wall -I../../include -c cmd_get_query.c
+cc -Wall -I../../include -c cmd_get_cfg_zheader.c
+cc -Wall -I../../include -c cmd_set_cfg_header.c
+cc -Wall -I../../include -c cmd_get_cfg_header.c
+cc -Wall -I../../include -c cmd_set_cfg_data.c
+cc -Wall -I../../include -c cmd_get_cfg_data.c
+cc -Wall -I../../include -c cmd_set_system_status_val.c
+cc -Wall -I../../include -c cmd_get_system_status_val.c
+cc -Wall -I../../include -c cmd_set_can_bootldr.c
+cc -Wall -I../../include -c cmd_get_can_bootldr.c
+ar rvs libmr_ipc.a create.o destroy.o init.o exit.o connect.o connect_if.o server.o server_if.o accept.o send.o receive.o encode_can.o decode_can.o cmd_set_null.o cmd_get_null.o cmd_set_run.o cmd_get_run.o cmd_set_track_proto.o cmd_get_track_proto.o cmd_set_cfg_zheader.o cmd_set_locomotive_dir.o cmd_set_locomotive_speed.o cmd_set_locomotive_fkt.o cmd_get_locomotive_dir.o cmd_get_locomotive_speed.o cmd_get_locomotive_fkt.o cmd_set_acc_pos.o cmd_set_query.o cmd_get_acc_pos.o cmd_set_member.o cmd_get_member.o cmd_set_get_member.o cmd_set_get_locname.o cmd_get_get_locname.o cmd_set_get_locinfo.o cmd_get_get_locinfo.o cmd_get_query.o cmd_get_cfg_zheader.o cmd_set_cfg_header.o cmd_get_cfg_header.o cmd_set_cfg_data.o cmd_get_cfg_data.o cmd_set_system_status_val.o cmd_get_system_status_val.o cmd_set_can_bootldr.o cmd_get_can_bootldr.o
+ar: creating libmr_ipc.a
+cfg_gstr.c: In function ‘ConfigGetStrVal’:
+cfg_gstr.c:15:4: warning: enumeration value ‘CfgGpioS88’ not handled in switch [-Wswitch]
+a - create.o
+a - destroy.o
+a - init.o
+a - exit.o
+a - connect.o
+a - connect_if.o
+a - server.o
+a - server_if.o
+a - accept.o
+a - send.o
+a - receive.o
+a - encode_can.o
+a - decode_can.o
+a - cmd_set_null.o
+a - cmd_get_null.o
+a - cmd_set_run.o
+a - cmd_get_run.o
+cfg_sstr.c: In function ‘ConfigAddStrVal’:
+cfg_sstr.c:13:4: warning: enumeration value ‘CfgGpioS88’ not handled in switch [-Wswitch]
+a - cmd_set_track_proto.o
+a - cmd_get_track_proto.o
+a - cmd_set_cfg_zheader.o
+a - cmd_set_locomotive_dir.o
+a - cmd_set_locomotive_speed.o
+a - cmd_set_locomotive_fkt.o
+a - cmd_get_locomotive_dir.o
+a - cmd_get_locomotive_speed.o
+a - cmd_get_locomotive_fkt.o
+ar: creating libmrconfig.a
+a - cmd_set_acc_pos.o
+a - cmd_set_query.o
+a - cmd_get_acc_pos.o
+a - cmd_set_member.o
+a - cmd_get_member.o
+a - cmd_set_get_member.o
+a - cmd_set_get_locname.o
+a - cmd_get_get_locname.o
+a - cmd_set_get_locinfo.o
+a - cmd_get_get_locinfo.o
+a - cmd_get_query.o
+a - cmd_get_cfg_zheader.o
+a - cmd_set_cfg_header.o
+a - cmd_get_cfg_header.o
+a - cmd_set_cfg_data.o
+a - cmd_get_cfg_data.o
+a - cmd_set_system_status_val.o
+a - cmd_get_system_status_val.o
+a - cmd_set_can_bootldr.o
+a - cmd_get_can_bootldr.o
+cp libmr_ipc.a  ../../lib
+cp mr_ipc.h ../../include
+make[2]: Leaving directory `/home/michael/src/modellbahn/mrsystem/libs/mr_ipc'
+make -C config  CFLAGS="-Wall"  INCLUDE_PATH=../../include LIB_PATH=../../lib
+make[2]: Entering directory `/home/michael/src/modellbahn/mrsystem/libs/config'
+cc -Wall -I../../include -c cfg_create.c
+cc -Wall -I../../include -c cfg_destroy.c
+cc -Wall -I../../include -c cfg_init.c
+cc -Wall -I../../include -c cfg_exit.c
+cc -Wall -I../../include -c cfg_read.c
+cc -Wall -I../../include -c cfg_cmdline.c
+cc -Wall -I../../include -c cfg_gint.c
+cc -Wall -I../../include -c cfg_sint.c
+cc -Wall -I../../include -c cfg_gstr.c
+cc -Wall -I../../include -c cfg_sstr.c
+ar rvs libmrconfig.a cfg_create.o cfg_destroy.o cfg_init.o cfg_exit.o cfg_read.o cfg_cmdline.o cfg_gint.o cfg_sint.o cfg_gstr.o cfg_sstr.o
+a - cfg_create.o
+a - cfg_destroy.o
+a - cfg_init.o
+a - cfg_exit.o
+a - cfg_read.o
+a - cfg_cmdline.o
+a - cfg_gint.o
+a - cfg_sint.o
+a - cfg_gstr.o
+a - cfg_sstr.o
+cp libmrconfig.a  ../../lib
+cp config.h ../../include
+make[2]: Leaving directory `/home/michael/src/modellbahn/mrsystem/libs/config'
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/libs'
+make -C client_cs2sl CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_cs2sl'
+cc -Wall -DTRACE=1 -I../include -c main.c
+cc -Wall -DTRACE=1 -I../include -c cs2sl.c
+cc  -L../lib -o mrcs2sl main.o cs2sl.o  -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lmenge -ldliste -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_cs2sl'
+make -C client_cs2eth CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_cs2eth'
+cc -Wall -DTRACE=1 -I../include -c main.c
+cc -Wall -DTRACE=1 -I../include -c cs2eth.c
+cc  -L../lib -o mrcs2eth main.o cs2eth.o  -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lmenge -ldliste -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_cs2eth'
+make -C client_inject CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_inject'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c inject.c
+cc  -L../lib -o mrinject main.o inject.o  -lmr_ipc -lm -lmr_can -lmrconfig -linipars -lscanner -lmap -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_inject'
+make -C client_log CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_log'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c log.c
+cc  -L../lib -o mrlog main.o log.o  -lmr_ipc -lm -lmrconfig -linipars -lscanner -lmap -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_log'
+make -C client_logms2 CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_logms2'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -o ../client_ms2/can_client.o -c ../client_ms2/can_client.c
+cc -Wall -I../include -c logms2.c
+cc  -L../lib -o mrlogms2 main.o ../client_ms2/can_client.o logms2.o  -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_logms2'
+make -C client_ms2 CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_ms2'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c ms2.c
+cc  -L../lib -o mrms2 main.o can_client.o ms2.o  -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lavl -lqueue -ldliste
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_ms2'
+make -C client_cc CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_cc'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c cc_client.c
+cc  -L../lib -o mrcc main.o ../client_ms2/ms2.o cc_client.o  -lrt -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lavl -lqueue -ldliste
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_cc'
+make -C client_slcan CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_slcan'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c slcan_client.c
+cc  -L../lib -o mrslcan main.o ../client_ms2/ms2.o slcan_client.o  -lrt -lmr_ipc -lmr_can -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lavl -lqueue -ldliste
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_slcan'
+make -C client_gpios88 CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_gpios88'
+cc -Wall -DUSE_MRSYSTEM -I../include -c s88udp-bpi.c
+s88udp-bpi.c: In function ‘main’:
+s88udp-bpi.c:225:15: warning: unused variable ‘on’ [-Wunused-variable]
+cc -Wall -DUSE_MRSYSTEM -I../include -c a20.c
+cc  -L../lib -o mrgpios88 s88udp-bpi.o a20.o  -lmr_ipc -lm -lmr_can -lbytestream
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_gpios88'
+make -C client_zentrale CFLAGS="-Wall"  DIR=release INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/client_zentrale'
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/main.o -c main.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/zentrale.o -c zentrale.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/states.o -c states.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/cron.o -c cron.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/lok.o -c lok.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/gleisbild.o -c gleisbild.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/gleisbildpage.o -c gleisbildpage.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/magnetartikel.o -c magnetartikel.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/magstat.o -c magstat.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/fahrstrasse.o -c fahrstrasse.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/lokstatus.o -c lokstatus.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/gbsstat.o -c gbsstat.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/fsstat.o -c fsstat.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/zfile.o -c zfile.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc -Wall  -I../include -o release/canmember.o -c canmember.c
+if [ ! -d release ] ; then mkdir release ; fi
+cc  -L../lib -o release/mrzentrale release/main.o release/zentrale.o release/states.o release/cron.o release/lok.o release/gleisbild.o release/gleisbildpage.o release/magnetartikel.o release/magstat.o release/fahrstrasse.o release/lokstatus.o release/gbsstat.o release/fsstat.o release/zfile.o release/canmember.o  -lmr_ipc -lmr_can -lcs2_parse -lfsm -lm -lbytestream -lmrconfig -linipars -lscanner -lmap -lmenge -lavl -ldliste -lz
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/client_zentrale'
+make -C drehscheibe CFLAGS="-Wall" INCLUDE_PATH=../include LIB_PATH=../lib
+make[1]: Entering directory `/home/michael/src/modellbahn/mrsystem/drehscheibe'
+cc -Wall -I../include -c main.c
+cc -Wall -I../include -c drehscheibe.c
+cc  -L../lib -o drehscheibe main.o drehscheibe.o  -lmr_ipc -lm -lmenge -lstack -lliste -ldliste -lmrconfig -linipars -lscanner -lmap -lavl
+make[1]: Leaving directory `/home/michael/src/modellbahn/mrsystem/drehscheibe'
+
+20:40:06 Build Finished (took 26s.318ms)
+

@@ -1,0 +1,8 @@
+enable_tab=Rocrail Server aktivieren/deaktivieren
+install_tab=Neuen Rocrail Server installieren
+restart_tab=Start/Stop/Restart rocrail server
+enable_server=Rocrail Server aktivieren
+install_server=Rocrail deb installieren
+save=Speichern
+install=Installieren
+go=Go

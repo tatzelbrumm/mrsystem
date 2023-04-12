@@ -1,0 +1,8 @@
+enable_tab=enable/disable rocrail server
+install_tab=Install new rocrail server
+restart_tab=Start/Stop/Restart rocrail server
+enable_server=Enable rocrail server
+install_server=Install rocrail deb
+save=Save
+install=Install
+go=Go

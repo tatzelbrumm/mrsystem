@@ -1,0 +1,154 @@
+diff -Nru a/tools/announce.cpp b/tools/announce.cpp
+--- a/tools/announce.cpp	2015-11-10 21:25:43.000000000 +0100
++++ b/tools/announce.cpp	2018-07-08 19:02:15.000000000 +0200
+@@ -21,10 +21,14 @@
+ 
+ */
+ 
++#include <sys/types.h>
+ #include <sys/socket.h>
++#include <sys/ioctl.h>
++#include <net/if.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ #include <unistd.h>
++#include <stdio.h>
+ 
+ #include <csignal>
+ #include <climits>
+@@ -39,6 +43,7 @@
+ 
+ #include "config.h"
+ 
++char *use_server_location;
+ const short upnp_broadcast_port=1900;
+ const char upnp_broadcast_addr[]="239.255.255.250";
+ 
+@@ -98,6 +103,12 @@
+     ~Socket() {
+         if (sd!=-1) close(sd);
+     }
++    void bind_if(char *if_name) {
++        struct ifreq ifr;
++        memset(&ifr, 0, sizeof(ifr));
++        strncpy(ifr.ifr_name, if_name, IFNAMSIZ-1);
++        ::setsockopt(sd, SOL_SOCKET, SO_BINDTODEVICE, (void *)&ifr, sizeof(ifr));
++    }
+     void bind(int family, int port, in_addr_t addr) {
+         sockaddr_in localSock = sockaddr_in();
+         localSock.sin_family = family;
+@@ -169,6 +180,9 @@
+          static unicast_socket sing;
+          return sing;
+     }
++    void bind_if(char *if_name) {
++        sd.bind_if(if_name);
++    }
+     void notify() {
+         sockaddr_in localSock=sockaddr_in();
+         localSock.sin_family = AF_INET;
+@@ -178,7 +192,7 @@
+         std::string base = Formatter() << "NOTIFY * HTTP/1.1\r\n" <<
+                                           "HOST: " << upnp_broadcast_addr <<":"<< upnp_broadcast_port << "\r\n" <<
+                                           "CACHE-CONTROL: max-age="<<cache_age<<"\r\n" <<
+-                                          "LOCATION: "<<server_location<<"\r\n" <<
++                                          "LOCATION: "<<use_server_location<<"\r\n" <<
+                                           "SERVER: "<<server_id<<"\r\n";
+ 
+ 
+@@ -206,7 +220,7 @@
+         std::string base = Formatter() << "HTTP/1.1 200 OK\r\n" <<
+                                           "EXT:\r\n" <<
+                                           "CACHE-CONTROL: max-age="<<cache_age<<"\r\n" <<
+-                                          "LOCATION: "<<server_location<<"\r\n" <<
++                                          "LOCATION: "<<use_server_location<<"\r\n" <<
+                                           "SERVER: "<<server_id<<"\r\n";
+ 
+         for(std::vector<std::string>::iterator it = services.begin(); it != services.end(); ++it) {
+@@ -239,6 +253,38 @@
+         if (log_verbose)
+             std::cout << "Adding multicast group...OK.\n";
+     }
++    broadcast_socket(char *if_name) :sd(AF_INET, SOCK_DGRAM) {
++        struct ifreq ifr;
++
++        if (if_name != NULL) {
++            ifr.ifr_addr.sa_family = AF_INET;
++            strncpy(ifr.ifr_name, if_name, IFNAMSIZ-1);
++
++            ioctl(sd.sd, SIOCGIFADDR, &ifr);
++            sd.bind_if(if_name);
++            sd.reuse_address();
++
++            sd.bind(AF_INET, upnp_broadcast_port, ((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr.s_addr);
++        }
++        else {
++            sd.reuse_address();
++
++            sd.bind(AF_INET, upnp_broadcast_port, INADDR_ANY);
++        }
++
++        // Join the multicast group
++        //  Note that this IP_ADD_MEMBERSHIP option must be
++        // called for each local interface over which the multicast
++        // datagrams are to be received.
++        group.imr_multiaddr.s_addr = inet_addr(upnp_broadcast_addr);
++        if (if_name != NULL)
++            group.imr_interface.s_addr = ((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr.s_addr;
++        else
++            group.imr_interface.s_addr = Socket::localhost_in_addr();
++        sd.setsockopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&group, sizeof(group));
++        if (log_verbose)
++            std::cout << "Adding multicast group...OK.\n";
++    }
+     ~broadcast_socket() {
+             group.imr_interface.s_addr = inet_addr("0.0.0.0");
+             sd.setsockopt(IPPROTO_IP, IP_DROP_MEMBERSHIP, (char *)&group, sizeof(group));
+@@ -270,17 +316,37 @@
+     send_notify = 1;
+ }
+ 
+-int main(void)
++int main(int argc, char *argv[])
+ {
++    int c;
+     struct sigaction sigIntHandler;
++    char *if_name = NULL;
++
++    use_server_location = (char *)server_location;
++    do {
++        c = getopt(argc, argv, "i:l:");
++        switch (c)
++        {
++            case 'l':
++                use_server_location = strdup(optarg);
++                break;
++            case 'i':
++                if_name = strdup(optarg);
++                unicast_socket::get().bind_if(if_name);
++                break;
++            default:
++                break;
++        }
++    } while (c != -1);
++
+     sigIntHandler.sa_handler = ctrlc_handler;
+     sigemptyset(&sigIntHandler.sa_mask);
+     sigIntHandler.sa_flags = 0;
+     sigaction(SIGINT, &sigIntHandler, NULL);
+     sigIntHandler.sa_handler = sigalrm_handler;
+     sigaction(SIGALRM, &sigIntHandler, NULL);
++    broadcast_socket bcast(if_name);
+ 
+-    broadcast_socket bcast;
+     while(!exit_now) {
+         if (send_notify) {
+             send_notify=0;
+diff -Nru a/tools/config.h b/tools/config.h
+--- a/tools/config.h	1970-01-01 01:00:00.000000000 +0100
++++ b/tools/config.h	2018-07-05 08:12:59.000000000 +0200
+@@ -0,0 +1,4 @@
++const char server_location[] = "http://127.0.0.1:80/phpdlna/rootDesc.xml";
++const char device_uuid[] = "17f4370c-dae1-11e3-841f-00e04c6a3575";
++const char server_id[] = "Linux, UPnP/1.0, PHPDLNA/1.0";
++

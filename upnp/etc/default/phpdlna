@@ -1,0 +1,4 @@
+# /etc/default/phpdlna
+
+# Set to '0' to explicitly disable starting phpdlna
+#ENABLED=0

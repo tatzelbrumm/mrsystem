@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:dlna="urn:schemas-dlna-org:device-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<device>
+<deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+<friendlyName>mrsystem</friendlyName>
+<manufacturer>michael_bernstein@mbernstein.de</manufacturer>
+<manufacturerURL>http://mbernstein.de/modellbahn/can</manufacturerURL>
+<modelDescription>mrsystem</modelDescription>
+<modelName>mrsystem</modelName>
+<modelNumber>1</modelNumber>
+<modelURL>http://127.0.0.1/modelURL</modelURL>
+<serialNumber>12345678</serialNumber>
+<presentationURL>http://127.0.0.1/</presentationURL>
+<UDN>uuid:17f4370c-dae1-11e3-841f-00e04c6a3575</UDN>
+</device>
+<URLBase>http://127.0.0.1:80/</URLBase>
+</root>

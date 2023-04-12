@@ -1,0 +1,14 @@
+# update actual IP address in uPnP Description
+
+# To enable this script set the following variable to "yes"
+RUN="yes"
+
+if [ "$RUN" = "yes" ]; then
+	head -n 16 /var/www/phpdlna/rootDesc.xml > /tmp/rootDesc.xml
+	echo "<presentationURL>http://$new_ip_address/</presentationURL>" >> /tmp/rootDesc.xml
+	tail -n 4 /var/www/phpdlna/rootDesc.xml >> /tmp/rootDesc.xml
+	mv /tmp/rootDesc.xml /var/www/phpdlna/rootDesc.xml
+	chmod 6444 /var/www/phpdlna/rootDesc.xml
+	/etc/init.d/phpdlna stop
+	/etc/init.d/phpdlna start
+fi

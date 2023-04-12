@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# start announce with /etc/init.d/phpdlna
+/etc/init.d/phpdlna restart

@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>ByteStream</TITLE>
+</HEAD>
+<BODY>
+<H1>ByteStream</H1>
+<P>
+Dieses Modul stellt Funktionnen zur Verf&uuml;gung, um aus einen Strom von
+Bytes Datentypen wie short und long zu lesen und zu schreiben. Die Bytes
+werden in per Motorola Reihenfolge (big endian) erwartet. Sie k&ouml;nnen auch
+auf einer ungeraden Adresse liegen. Die Bytereihenfolge kann auf Intel (little
+endian) umgestellt werden. Der Einsatz des Moduls vermeidet ein
+"dar&uuml;berlegen" einer Struktur, bei der ein bestimmtes Alignement erzwungen
+werden m&uuml;&szlig;te.
+<P>
+<H2>Sprachen</H2>
+<P>
+C, C++
+<P>
+<H2>Includefiles</H2>
+<P>
+<PRE>#include &lt;bytestream.h&gt;</PRE>
+<P>
+<H2>Librays</H2>
+<P>
+libbytestream.a
+<P>
+<H2>Funktionen</H2>
+<P>
+<H3>Lesen aus dem Bytestrom</H3>
+<P>
+<PRE>
+unsigned long GetLongFromByteArray(unsigned char *Data);
+unsigned int GetIntFromByteArray(unsigned char *Data);
+</PRE>
+<P>
+<H3>Schreiben in einen Bytestrom</H3>
+<P>
+<PRE>
+void SetLongToByteArray(unsigned char *Data, unsigned long Value);
+void SetIntToByteArray(unsigned char *Data, unsigned int Value);
+</PRE>
+<P>
+<H3>Umstellen der Endianess</H3>
+<P>
+<PRE>
+#define BYTESTREAM_LITTLE_ENDIAN 1
+#define BYTESTREAM_BIG_ENDIAN    2
+
+void ByteStreamSetEndianess(int Endianess);
+</PRE>
+</BODY>
+</HTML>

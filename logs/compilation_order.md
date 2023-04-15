@@ -15,3 +15,18 @@
 1. `cd libraries/inipars; make all; sudo make install; make ..`
 1. `cd libraries/fsm; make all; sudo make install; make ..`
 1. `make all; sudo make install`
+
+# Documentation  
+
+## Prerequisites
+`sudo apt-get install doxygen`
+
+1. `make doku`
+
+# BROKEN LINKS
+
+Fontconfig error: Cannot load default config file: No such file: (null)
+
+* `www/Doku/mrsystem/index.htm?`
+* `www/Doku/doc/index.html?`
+

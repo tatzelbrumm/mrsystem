@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 #include "bitmask.h"
 
 #define max(a, b) ((a) > (b) ? (a) : (b))

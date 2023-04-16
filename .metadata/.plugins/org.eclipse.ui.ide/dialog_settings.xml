@@ -5,7 +5,7 @@
 		<item value="293" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
-		<item value="/home/michael/src/modellbahn/mrsystem/client_tty" key="OUTSIDE_LOCATION"/>
+		<item value="/home/cmaier/C/mrsystem/client_tty" key="OUTSIDE_LOCATION"/>
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">

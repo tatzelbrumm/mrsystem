@@ -141,7 +141,7 @@ static void DoValue(Cs2parser *Data, int StartToken)
        (Token == PARSER_TOKEN_KEYWORD_UNGERADE) ||
        (Token == PARSER_TOKEN_KEYWORD_DECODER) ||
        (Token == PARSER_TOKEN_KEYWORD_DECTYP) ||
-       (Token == PARSER_TOKEN_KEYWORD_FAHRSTRASSE) |
+       (Token == PARSER_TOKEN_KEYWORD_FAHRSTRASSE) ||
        (Token == PARSER_TOKEN_KEYWORD_S88) ||
        (Token == PARSER_TOKEN_KEYWORD_S88EIN) ||
        (Token == PARSER_TOKEN_KEYWORD_EXTERN) ||

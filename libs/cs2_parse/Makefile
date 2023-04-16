@@ -47,3 +47,6 @@ clean:
 
 clean_doku:
 	if [ -d $(DOKUPATH) ] ; then rm -r $(DOKUPATH) ; fi
+
+clean_link:
+	rm -f $(TARGET)

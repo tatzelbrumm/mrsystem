@@ -1,0 +1,224 @@
+ar: creating libcs2_parse.a
+ar: creating libcs2.a
+ar: creating libmr_cs2ms2.a
+ar: creating libmr_ipc.a
+ar: creating libmr_ipchl.a
+ar: creating libmrconfig.a
+ar: creating libuci.a
+ar: creating libsrcp.a
+main.c: In function ‘main’:
+main.c:27:10: warning: unused variable ‘ChildPid’ [-Wunused-variable]
+   27 |    pid_t ChildPid;
+      |          ^~~~~~~~
+log.c: In function ‘ProcessSystemData’:
+log.c:170:55: warning: pointer targets in passing argument 4 of ‘MrIpcCmdGetAccPos’ differ in signedness [-Wpointer-sign]
+  170 |          MrIpcCmdGetAccPos(CmdFrame, &Adr, &Position, (int *)&Param1);
+      |                                                       ^~~~~~~~~~~~~~
+      |                                                       |
+      |                                                       int *
+In file included from log.c:11:
+../include/mr_ipc.h:219:62: note: expected ‘unsigned int *’ but argument is of type ‘int *’
+  219 |                        PositionType *Position, unsigned int *Current);
+      |                                                ~~~~~~~~~~~~~~^~~~~~~
+main.c: In function ‘main’:
+main.c:27:10: warning: unused variable ‘ChildPid’ [-Wunused-variable]
+   27 |    pid_t ChildPid;
+      |          ^~~~~~~~
+lok.c: In function ‘GetActionInfo’:
+lok.c:73:20: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   73 |                    (MapKeyType)FktNr, (MapDataType)Cmd);
+      |                    ^
+lok.c: In function ‘fktcmp’:
+lok.c:105:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  105 |    return((int)d1 - (int)d2);
+      |           ^
+lok.c:105:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  105 |    return((int)d1 - (int)d2);
+      |                     ^
+lok.c: In function ‘ProcessSystemData’:
+lok.c:326:68: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  326 |                   Cmd = (char *)MapGet(LokGetSpecialActions(Data), (MapKeyType)FktNr);
+      |                                                                    ^
+states.c: In function ‘HandleGoHandshake’:
+states.c:85:16: warning: variable ‘Data’ set but not used [-Wunused-but-set-variable]
+   85 | {  SrcpStruct *Data;
+      |                ^~~~
+states.c: In function ‘HandleOther’:
+states.c:1120:17: warning: variable ‘CmdFrame’ set but not used [-Wunused-but-set-variable]
+ 1120 |    SignalParam *CmdFrame;
+      |                 ^~~~~~~~
+gleisbild.c: In function ‘GleisbildIdCmp’:
+gleisbild.c:38:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |           ^
+gleisbild.c:38:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |                     ^
+gleisbild.c: In function ‘GleisbildInsert’:
+gleisbild.c:72:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   72 |                                           (MapKeyType)Id);
+      |                                           ^
+gleisbild.c:89:17: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   89 |                 (MapKeyType)Id, (MapDataType)OldGleisbild);
+      |                 ^
+gleisbild.c: In function ‘GleisbildDelete’:
+gleisbild.c:98:42: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   98 |    MapDel(GleisbildGetGleisbildDb(Data), (MapKeyType)Id);
+      |                                          ^
+gleisbild.c: In function ‘GleisbildSearch’:
+gleisbild.c:104:35: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  104 |                                   (MapKeyType)Id));
+      |                                   ^
+gleisbildpage.c: In function ‘GleisbildPageIdCmp’:
+gleisbildpage.c:42:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   42 |    return((int)d1 - (int)d2);
+      |           ^
+gleisbildpage.c:42:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   42 |    return((int)d1 - (int)d2);
+      |                     ^
+gleisbildpage.c: In function ‘GleisbildPageInsert’:
+gleisbildpage.c:80:48: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   80 |                                                (MapKeyType)Id);
+      |                                                ^
+gleisbildpage.c:118:17: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |                 (MapKeyType)Id, (MapDataType)OldElement);
+      |                 ^
+gleisbildpage.c: In function ‘GleisbildPageDelete’:
+gleisbildpage.c:128:50: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  128 |    MapDel(GleisbildPageStructGetElementDb(Data), (MapKeyType)Id);
+      |                                                  ^
+gleisbildpage.c: In function ‘GleisbildPageSearch’:
+gleisbildpage.c:134:42: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  134 |                                          (MapKeyType)Id));
+      |                                          ^
+magnetartikel.c: In function ‘MagnetartikelIdCmp’:
+magnetartikel.c:38:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |           ^
+magnetartikel.c:38:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |                     ^
+magnetartikel.c: In function ‘MagnetartikelInsert’:
+magnetartikel.c:73:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   73 |                                           (MapKeyType)Id);
+      |                                           ^
+magnetartikel.c:99:17: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   99 |                 (MapKeyType)Id, (MapDataType)OldMagnetartikel);
+      |                 ^
+magnetartikel.c: In function ‘MagnetartikelDelete’:
+magnetartikel.c:109:50: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  109 |    MapDel(MagnetartikelGetMagnetartikelDb(Data), (MapKeyType)Id);
+      |                                                  ^
+magnetartikel.c: In function ‘MagnetartikelSearch’:
+magnetartikel.c:115:39: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  115 |                                       (MapKeyType)Id));
+      |                                       ^
+magstat.c: In function ‘MagStatusInsert’:
+magstat.c:18:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   18 |                                           (MapKeyType)Id);
+      |                                           ^
+fahrstrasse.c: In function ‘FahrstrasseIdCmp’:
+fahrstrasse.c:38:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |           ^
+fahrstrasse.c:38:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   38 |    return((int)d1 - (int)d2);
+      |                     ^
+fahrstrasse.c: In function ‘FahrstrasseInsert’:
+fahrstrasse.c:81:47: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   81 |                                               (MapKeyType)Id);
+      |                                               ^
+fahrstrasse.c:84:49: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   84 |       MapDel(FahrstrasseGetFahrstrasseDb(Data), (MapKeyType)Id);
+      |                                                 ^
+fahrstrasse.c:104:14: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  104 |              (MapKeyType)Id, (MapDataType)OldFahrstrasse);
+      |              ^
+fahrstrasse.c: In function ‘FahrstrasseDelete’:
+fahrstrasse.c:112:46: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  112 |    MapDel(FahrstrasseGetFahrstrasseDb(Data), (MapKeyType)Id);
+      |                                              ^
+fahrstrasse.c: In function ‘FahrstrasseSearch’:
+fahrstrasse.c:118:37: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |                                     (MapKeyType)Id));
+      |                                     ^
+fahrstrasse.c: In function ‘FahrstrasseItemNrCmp’:
+fahrstrasse.c:123:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  123 |    return((int)d1 - (int)d2);
+      |           ^
+fahrstrasse.c:123:21: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  123 |    return((int)d1 - (int)d2);
+      |                     ^
+fahrstrasse.c: In function ‘FahrstrasseItemInsert’:
+fahrstrasse.c:131:40: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  131 |                                        (MapKeyType)Nr);
+      |                                        ^
+fahrstrasse.c:173:17: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  173 |                 (MapKeyType)Nr, (MapDataType)OldItem);
+      |                 ^
+fahrstrasse.c: In function ‘FahrstrasseDeleteItem’:
+fahrstrasse.c:180:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  180 |    MapDel(FahrstrasseInfoGetItemDb(Data), (MapKeyType)Nr);
+      |                                           ^
+fahrstrasse.c: In function ‘FahrstrasseSearchItem’:
+fahrstrasse.c:186:37: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  186 |                                     (MapKeyType)Nr));
+      |                                     ^
+gbsstat.c: In function ‘GbsStatInsert’:
+gbsstat.c:17:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   17 |                                           (MapKeyType)Id);
+      |                                           ^
+fsstat.c: In function ‘FsStatInsert’:
+fsstat.c:17:47: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   17 |                                               (MapKeyType)Id);
+      |                                               ^
+cs2cfg.c: In function ‘Cs2DataCmp’:
+cs2cfg.c:32:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   32 |    return((unsigned int)d1 - (unsigned int)d2);
+      |           ^
+cs2cfg.c:32:30: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   32 |    return((unsigned int)d1 - (unsigned int)d2);
+      |                              ^
+cs2cfg.c: In function ‘Cs2CfgDataStart’:
+cs2cfg.c:59:46: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   59 |          MapSet(Cs2CfgDataGetCfgDatas(Data), (MapKeyType)CanHash,
+      |                                              ^
+cs2cfg.c: In function ‘Cs2CfgDataSetLen’:
+cs2cfg.c:76:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   76 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataAllRead’:
+cs2cfg.c:87:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   87 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataNextBuf’:
+cs2cfg.c:102:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  102 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataGetLength’:
+cs2cfg.c:120:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  120 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataGetHaveRead’:
+cs2cfg.c:135:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  135 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataGetBuf’:
+cs2cfg.c:150:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  150 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataGetLen’:
+cs2cfg.c:165:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  165 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataGetIsCompressed’:
+cs2cfg.c:180:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  180 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c: In function ‘Cs2CfgDataEnd’:
+cs2cfg.c:195:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  195 |                                  (MapKeyType)CanHash);
+      |                                  ^
+cs2cfg.c:205:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  205 |       MapDel(Cs2CfgDataGetCfgDatas(Data), (MapKeyType)CanHash);
+      |                                           ^
